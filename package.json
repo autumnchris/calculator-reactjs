@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/autumnchris/calculator-react/issues"
   },
-  "homepage": "https://autumnchris.github.io/calculator-react"
+  "homepage": "https://autumnchris.github.io/calculator-react",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  }
 }
