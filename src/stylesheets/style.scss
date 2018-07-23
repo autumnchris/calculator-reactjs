@@ -1,9 +1,16 @@
+@font-face {
+  font-family: "digital 7 italic";
+  src: url(../fonts/digital-7-italic.ttf);
+}
+
 $dark-gray: #333;
 $med-gray: rgba(255, 255, 255, 0.1);
 $white: #fff;
-$light-blue: #83bbc9;
+$med-light-blue: #83bbc9;
+$light-blue: #cae2e8;
 
 $monospace-font: "Oxygen Mono", monospace;
+$screen-font: "digital 7 italic", Helvetica, Arial, sans-serif;
 
 html {
   background: $dark-gray;
@@ -15,6 +22,37 @@ html {
     letter-spacing: 12px;
     padding: 40px 0 20px;
     text-transform: lowercase;
+  }
+  main {
+    padding-bottom: 50px;
+    .calculator {
+      background: $med-gray;
+      border-radius: 6px;
+      margin: 0 auto 30px;
+      max-width: 320px;
+      padding: 20px 0;
+      @media only screen and (orientation: landscape) {
+        max-width: 400px;
+      }
+      .screen {
+        background: $light-blue;
+        background: linear-gradient(to right, $med-light-blue, $light-blue) fixed;
+        border-radius: 4px;
+        font-family: $screen-font;
+        font-size: 1.8rem;
+        height: 50px;
+        letter-spacing: 2px;
+        margin: 2px auto 0;
+        overflow: auto;
+        padding-top: 20px;
+        padding-right: 5px;
+        text-align: right;
+        width: 250px;
+        @media only screen and (orientation: landscape) {
+          width: 350px;
+        }
+      }
+    }
   }
   footer {
     background: $med-gray;
@@ -32,7 +70,7 @@ html {
     a:hover,
     a:active,
     a:focus {
-      color: $light-blue;
+      color: $med-light-blue;
     }
   }
 }
