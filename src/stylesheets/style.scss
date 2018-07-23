@@ -1,0 +1,17 @@
+$dark-gray: #333;
+$white: #fff;
+
+$monospace-font: "Oxygen Mono", monospace;
+
+html {
+  background: $dark-gray;
+  background: linear-gradient(120deg, #262626, #4d4d4d) fixed;
+  h1 {
+    color: $white;
+    font-family: $monospace-font;
+    font-size: 1.5rem;
+    letter-spacing: 12px;
+    padding: 40px 0 20px;
+    text-transform: lowercase;
+  }
+}
