@@ -1,5 +1,7 @@
 $dark-gray: #333;
+$med-gray: rgba(255, 255, 255, 0.1);
 $white: #fff;
+$light-blue: #83bbc9;
 
 $monospace-font: "Oxygen Mono", monospace;
 
@@ -13,5 +15,24 @@ html {
     letter-spacing: 12px;
     padding: 40px 0 20px;
     text-transform: lowercase;
+  }
+  footer {
+    background: $med-gray;
+    bottom: 0;
+    color: $white;
+    font-size: 0.8rem;
+    left: 0;
+    letter-spacing: 2px;
+    padding: 14px 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    a,
+    a:visited,
+    a:hover,
+    a:active,
+    a:focus {
+      color: $light-blue;
+    }
   }
 }

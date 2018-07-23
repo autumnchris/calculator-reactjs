@@ -13,6 +13,8 @@ export default class App extends Component {
         <header>
           <h1>Calculator</h1>
         </header>
+        {/* FOOTER */}
+        <footer>Coded by <a href="../portfolio" target="_blank">Autumn Bullard</a></footer>
       </div>
     );
   }
