@@ -6,11 +6,18 @@
 $dark-gray: #333;
 $med-gray: rgba(255, 255, 255, 0.1);
 $white: #fff;
+$black: #000;
+$calc-button-color: #00779e;
+$clear-button-color: #f3878c;
 $med-light-blue: #83bbc9;
 $light-blue: #cae2e8;
 
 $monospace-font: "Oxygen Mono", monospace;
 $screen-font: "digital 7 italic", Helvetica, Arial, sans-serif;
+
+*:focus {
+  outline: none;
+}
 
 html {
   background: $dark-gray;
@@ -50,6 +57,52 @@ html {
         width: 250px;
         @media only screen and (orientation: landscape) {
           width: 350px;
+        }
+      }
+      .button-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        button,
+        button:hover,
+        button:active,
+        button:focus {
+          background: $calc-button-color;
+          box-shadow: -1px 3px 2px $black;
+          border-radius: 4px;
+          color: $white;
+          font-size: 1rem;
+          height: 45px;
+          margin: 5px;
+          width: 55px;
+          @media only screen and (orientation: landscape) {
+            height: 40px;
+            width: 80px;
+          }
+          &:active {
+            box-shadow: -1px 1px 2px $black;
+            transform: translateY(2px);
+            -ms-transform: translateY(2px);
+            -webkit-transform: translateY(2px);
+          }
+        }
+        .number,
+        .number:hover,
+        .number:active,
+        .number:focus {
+          background: $white;
+          color: $dark-gray;
+        }
+        .clear,
+        .clear:hover,
+        .clear:active,
+        .clear:focus {
+          background: $clear-button-color;
+          color: $dark-gray;
         }
       }
     }
