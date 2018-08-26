@@ -4,6 +4,14 @@ My project for the [Build a JavaScript Calculator challenge](https://learn.freec
 
 ---
 
+## Built With
+* [React](https://reactjs.org)
+* [Sass](http://sass-lang.com)
+* [Webpack](https://webpack.js.org)
+* [Digital 7 font](https://www.dafont.com/digital-7.font)
+* [Google Fonts](https://fonts.google.com)
+* [Babel](https://babeljs.io)
+
 ## Demo
 
 View project demo at [https://autumnchris.github.io/calculator-react](https://autumnchris.github.io/calculator-react).
