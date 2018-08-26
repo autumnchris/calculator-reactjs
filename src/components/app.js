@@ -6,6 +6,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      screenValue: '0',
       buttons: [
         {
           value: '+/-'
@@ -93,7 +94,7 @@ export default class App extends Component {
         <main>
           <div className="calculator">
             {/* CALCULATOR SCREEN */}
-            <div className="screen">0</div>
+            <div className="screen">{this.state.screenValue}</div>
             {/* CALCULATOR BUTTONS */}
             <ButtonGroup buttons={this.state.buttons} />
           </div>
