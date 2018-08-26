@@ -88,7 +88,8 @@ export default class App extends Component {
           value: '.'
         },
         {
-          value: '='
+          value: '=',
+          func: () => this.solveEquation()
         },
         {
           value: '+',
@@ -113,11 +114,41 @@ export default class App extends Component {
   }
 
   selectOperator(elem) {
+    this.solveEquation();
 
     if (this.result.charAt(this.result.length - 1).match(/\s/)) {
       this.result = this.result.substr(0, this.result.length - 3);
     }
     this.result += ` ${elem} `;
+  }
+
+  solveEquation() {
+    let num1;
+    let num2;
+
+    if (this.result.includes(' ') && !this.result.charAt(this.result.length - 1).match(/\s/)) {
+      this.result = this.result.split(' ');
+      num1 = Number(this.result[0]);
+      num2 = Number(this.result[2]);
+
+      switch (this.result[1]) {
+        case '+':
+          this.result = num1 + num2;
+          break;
+        case '-':
+          this.result = num1 - num2;
+          break;
+        case '*':
+          this.result = num1 * num2;
+          break;
+        case '/':
+          this.result = num1 / num2;
+      }
+      this.result = this.result.toString();
+      this.setState({
+        screenValue: this.result
+      });
+    }
   }
 
   render() {
