@@ -226,6 +226,69 @@ export default class App extends Component {
     }
   }
 
+  setKeys(event) {
+
+    if (event.shiftKey) {
+      switch (event.keyCode) {
+        // plus sign
+        case 187:
+          this.selectOperator(event.key);
+          break;
+        // multiplication sign
+        case 56:
+          this.selectOperator(event.key);
+          break;
+        // percentage
+        case 53:
+          this.convertToPercent();
+      }
+    }
+    else {
+      if (event.keyCode >= 48 && event.keyCode <= 57) {
+        this.selectNumber(event.key);
+      }
+      else {
+        switch (event.keyCode) {
+          // minus sign
+          case 189:
+            this.selectOperator(event.key);
+            break;
+          // division sign
+          case 191:
+            this.selectOperator(event.key);
+            break;
+          // equal sign
+          case 187:
+          // enter
+          case 13:
+            this.solveEquation();
+            break;
+          // spacebar
+          case 32:
+            this.togglePosNeg();
+            break;
+          // delete/backspace
+          case 8:
+            this.clearEntry();
+            break;
+          // escape
+          case 27:
+            this.clearAll();
+            break;
+          // decimal/period
+          case 190:
+            this.selectDecimal();
+        }
+      }
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', (event) => {
+      this.setKeys(event);
+    });
+  }
+
   render() {
     return (
       <div className="body">
