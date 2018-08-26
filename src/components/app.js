@@ -24,14 +24,17 @@ export default class App extends Component {
         },
         {
           value: '7',
+          func: () => this.selectNumber('7'),
           className: 'number'
         },
         {
           value: '8',
+          func: () => this.selectNumber('8'),
           className: 'number'
         },
         {
           value: '9',
+          func: () => this.selectNumber('9'),
           className: 'number'
         },
         {
@@ -39,14 +42,17 @@ export default class App extends Component {
         },
         {
           value: '4',
+          func: () => this.selectNumber('4'),
           className: 'number'
         },
         {
           value: '5',
+          func: () => this.selectNumber('5'),
           className: 'number'
         },
         {
           value: '6',
+          func: () => this.selectNumber('6'),
           className: 'number'
         },
         {
@@ -54,14 +60,17 @@ export default class App extends Component {
         },
         {
           value: '1',
+          func: () => this.selectNumber('1'),
           className: 'number'
         },
         {
           value: '2',
+          func: () => this.selectNumber('2'),
           className: 'number'
         },
         {
           value: '3',
+          func: () => this.selectNumber('3'),
           className: 'number'
         },
         {
@@ -69,6 +78,7 @@ export default class App extends Component {
         },
         {
           value: '0',
+          func: () => this.selectNumber('0'),
           className: 'number'
         },
         {
@@ -82,6 +92,20 @@ export default class App extends Component {
         }
       ]
     };
+    this.result = '0';
+  }
+
+  selectNumber(elem) {
+    this.result = this.result.split(' ');
+
+    if (this.result[this.result.length - 1] === '0') {
+      this.result[this.result.length - 1] = this.result[this.result.length - 1].substr(1);
+    }
+    this.result[this.result.length - 1] += elem;
+    this.setState({
+      screenValue: this.result[this.result.length - 1]
+    });
+    this.result = this.result.join(' ');
   }
 
   render() {
