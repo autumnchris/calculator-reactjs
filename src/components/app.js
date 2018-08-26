@@ -9,7 +9,8 @@ export default class App extends Component {
       screenValue: '0',
       buttons: [
         {
-          value: '+/-'
+          value: '+/-',
+          func: () => this.togglePosNeg()
         },
         {
           value: '%',
@@ -152,6 +153,27 @@ export default class App extends Component {
       this.setState({
         screenValue: this.result
       });
+    }
+  }
+
+  togglePosNeg() {
+
+    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+      this.result = this.result.split(' ');
+
+      if (this.result[this.result.length - 1] < 0) {
+        this.result[this.result.length - 1] = Math.abs(this.result[this.result.length - 1]);
+      }
+      else if (this.result[this.result.length - 1] > 0) {
+        this.result[this.result.length - 1] = -this.result[this.result.length - 1];
+      }
+      else {
+        this.result[this.result.length - 1] = 0;
+      }
+      this.setState({
+        screenValue: this.result[this.result.length - 1]
+      });
+      this.result = this.result.join(' ');
     }
   }
 
