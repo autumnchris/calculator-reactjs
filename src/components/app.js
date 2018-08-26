@@ -38,7 +38,8 @@ export default class App extends Component {
           className: 'number'
         },
         {
-          value: '&divide;'
+          value: '&divide;',
+          func: () => this.selectOperator('/')
         },
         {
           value: '4',
@@ -56,7 +57,8 @@ export default class App extends Component {
           className: 'number'
         },
         {
-          value: '&times;'
+          value: '&times;',
+          func: () => this.selectOperator('*')
         },
         {
           value: '1',
@@ -74,7 +76,8 @@ export default class App extends Component {
           className: 'number'
         },
         {
-          value: '-'
+          value: '-',
+          func: () => this.selectOperator('-')
         },
         {
           value: '0',
@@ -88,7 +91,8 @@ export default class App extends Component {
           value: '='
         },
         {
-          value: '+'
+          value: '+',
+          func: () => this.selectOperator('+')
         }
       ]
     };
@@ -106,6 +110,14 @@ export default class App extends Component {
       screenValue: this.result[this.result.length - 1]
     });
     this.result = this.result.join(' ');
+  }
+
+  selectOperator(elem) {
+
+    if (this.result.charAt(this.result.length - 1).match(/\s/)) {
+      this.result = this.result.substr(0, this.result.length - 3);
+    }
+    this.result += ` ${elem} `;
   }
 
   render() {
