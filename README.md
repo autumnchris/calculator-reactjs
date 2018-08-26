@@ -4,6 +4,10 @@ My project for the [Build a JavaScript Calculator challenge](https://learn.freec
 
 ---
 
+## Demo
+
+View project demo at [https://autumnchris.github.io/calculator-react](https://autumnchris.github.io/calculator-react).
+
 ## Installation
 
 ```
