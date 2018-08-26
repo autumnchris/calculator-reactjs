@@ -16,10 +16,12 @@ export default class App extends Component {
         },
         {
           value: 'CE',
+          func: () => this.clearEntry(),
           className: 'clear'
         },
         {
           value: 'AC',
+          func: () => this.clearAll(),
           className: 'clear'
         },
         {
@@ -150,6 +152,28 @@ export default class App extends Component {
         screenValue: this.result
       });
     }
+  }
+
+  clearEntry() {
+
+    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+      this.result = this.result.split(' ');
+      this.result[this.result.length - 1] = '0';
+      this.setState({
+        screenValue: this.result[this.result.length - 1]
+      });
+      this.result = this.result.join(' ');
+    }
+    else {
+      this.result = this.result.substr(0, this.result.length - 3);
+    }
+  }
+
+  clearAll() {
+    this.result = '0';
+    this.setState({
+      screenValue: '0'
+    });
   }
 
   selectDecimal() {
