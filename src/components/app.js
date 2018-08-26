@@ -12,7 +12,8 @@ export default class App extends Component {
           value: '+/-'
         },
         {
-          value: '%'
+          value: '%',
+          func: () => this.convertToPercent()
         },
         {
           value: 'CE',
@@ -151,6 +152,18 @@ export default class App extends Component {
       this.setState({
         screenValue: this.result
       });
+    }
+  }
+
+  convertToPercent() {
+
+    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+      this.result = this.result.split(' ');
+      this.result[this.result.length - 1] /= 100;
+      this.setState({
+        screenValue: this.result[this.result.length - 1]
+      });
+      this.result = this.result.join(' ');
     }
   }
 
