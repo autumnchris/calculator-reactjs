@@ -1,9 +1,86 @@
 import React, { Component } from 'react';
+import ButtonGroup from './button-group';
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      buttons: [
+        {
+          value: '+/-'
+        },
+        {
+          value: '%'
+        },
+        {
+          value: 'CE',
+          className: 'clear'
+        },
+        {
+          value: 'AC',
+          className: 'clear'
+        },
+        {
+          value: '7',
+          className: 'number'
+        },
+        {
+          value: '8',
+          className: 'number'
+        },
+        {
+          value: '9',
+          className: 'number'
+        },
+        {
+          value: '&divide;'
+        },
+        {
+          value: '4',
+          className: 'number'
+        },
+        {
+          value: '5',
+          className: 'number'
+        },
+        {
+          value: '6',
+          className: 'number'
+        },
+        {
+          value: '&times;'
+        },
+        {
+          value: '1',
+          className: 'number'
+        },
+        {
+          value: '2',
+          className: 'number'
+        },
+        {
+          value: '3',
+          className: 'number'
+        },
+        {
+          value: '-'
+        },
+        {
+          value: '0',
+          className: 'number'
+        },
+        {
+          value: '.'
+        },
+        {
+          value: '='
+        },
+        {
+          value: '+'
+        }
+      ]
+    };
   }
 
   render() {
@@ -18,36 +95,7 @@ export default class App extends Component {
             {/* CALCULATOR SCREEN */}
             <div className="screen">0</div>
             {/* CALCULATOR BUTTONS */}
-            <div className="button-row">
-              <button type="button">+/-</button>
-              <button type="button">%</button>
-              <button type="button" className="clear">CE</button>
-              <button type="button" className="clear">AC</button>
-            </div>
-            <div className="button-row">
-              <button type="button" className="number">7</button>
-              <button type="button" className="number">8</button>
-              <button type="button" className="number">9</button>
-              <button type="button">&divide;</button>
-            </div>
-            <div className="button-row">
-              <button type="button" className="number">4</button>
-              <button type="button" className="number">5</button>
-              <button type="button" className="number">6</button>
-              <button type="button">&times;</button>
-            </div>
-            <div className="button-row">
-              <button type="button" className="number">1</button>
-              <button type="button" className="number">2</button>
-              <button type="button" className="number">3</button>
-              <button type="button">-</button>
-            </div>
-            <div className="button-row">
-              <button type="button" className="number">0</button>
-              <button type="button">.</button>
-              <button type="button">=</button>
-              <button type="button">+</button>
-            </div>
+            <ButtonGroup buttons={this.state.buttons} />
           </div>
         </main>
         {/* FOOTER */}
