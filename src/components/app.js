@@ -85,7 +85,8 @@ export default class App extends Component {
           className: 'number'
         },
         {
-          value: '.'
+          value: '.',
+          func: () => this.selectDecimal()
         },
         {
           value: '=',
@@ -148,6 +149,21 @@ export default class App extends Component {
       this.setState({
         screenValue: this.result
       });
+    }
+  }
+
+  selectDecimal() {
+
+    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+      this.result = this.result.split(' ');
+
+      if (!this.result[this.result.length - 1].includes('.')){
+        this.result[this.result.length - 1] += '.';
+        this.setState({
+          screenValue: this.result[this.result.length - 1]
+        });
+      }
+      this.result = this.result.join(' ');
     }
   }
 
