@@ -305,7 +305,7 @@ export default class App extends Component {
           </div>
         </main>
         {/* FOOTER */}
-        <footer>Coded by <a href="../portfolio" target="_blank">Autumn Bullard</a></footer>
+        <footer>Coded by <a href="https://autumnbullard-portfolio.herokuapp.com" target="_blank">Autumn Bullard</a></footer>
       </div>
     );
   }
