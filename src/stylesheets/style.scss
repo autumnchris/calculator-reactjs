@@ -3,17 +3,8 @@
   src: url(../fonts/digital-7-italic.ttf);
 }
 
-$dark-gray: #333;
-$med-gray: rgba(255, 255, 255, 0.1);
-$white: #fff;
-$black: #000;
-$calc-button-color: #00779e;
-$clear-button-color: #f3878c;
-$med-light-blue: #83bbc9;
-$light-blue: #cae2e8;
-
-$monospace-font: "Oxygen Mono", monospace;
-$screen-font: "digital 7 italic", Helvetica, Arial, sans-serif;
+@import 'variables';
+@import 'reset';
 
 *:focus {
   outline: none;
