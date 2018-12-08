@@ -1,7 +1,7 @@
 {
-  "name": "calculator-react",
+  "name": "calculator-reactjs",
   "version": "1.0.0",
-  "description": "My project for the Build a JavaScript Calculator challenge as part of the curriculum for the Front End Libraries Certification on Free Code Camp. Built with React.",
+  "description": "My project for the Build a JavaScript Calculator challenge as part of the curriculum for the Front End Libraries Certification on Free Code Camp. Built with React.js.",
   "main": "index.js",
   "scripts": {
     "build": "webpack -p",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/autumnchris/calculator-react.git"
+    "url": "git+https://github.com/autumnchris/calculator-reactjs.git"
   },
   "author": "autumnchris",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/autumnchris/calculator-react/issues"
+    "url": "https://github.com/autumnchris/calculator-reactjs/issues"
   },
-  "homepage": "https://autumnchris.github.io/calculator-react",
+  "homepage": "https://autumnchris.github.io/calculator-reactjs",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

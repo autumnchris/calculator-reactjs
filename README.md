@@ -1,11 +1,11 @@
-# Calculator (React)
+# Calculator (React.js)
 
-My project for the [Build a JavaScript Calculator challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-javascript-calculator) as part of the curriculum for the Front End Libraries Certification on [Free Code Camp](https://www.freecodecamp.org). Built with React.
+My project for the [Build a JavaScript Calculator challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-javascript-calculator) as part of the curriculum for the Front End Libraries Certification on [Free Code Camp](https://www.freecodecamp.org). Built with React.js.
 
 ---
 
 ## Built With
-* [React](https://reactjs.org)
+* [React.js](https://reactjs.org)
 * [Sass](http://sass-lang.com)
 * [Webpack](https://webpack.js.org)
 * [Digital 7 font](https://www.dafont.com/digital-7.font)
@@ -14,13 +14,13 @@ My project for the [Build a JavaScript Calculator challenge](https://learn.freec
 
 ## Demo
 
-View project demo at [https://autumnchris.github.io/calculator-react](https://autumnchris.github.io/calculator-react).
+View project demo at [https://autumnchris.github.io/calculator-reactjs](https://autumnchris.github.io/calculator-reactjs).
 
 ## Installation
 
 ```
-$ git clone https://github.com/autumnchris/calculator-react.git
-$ cd calculator-react
+$ git clone https://github.com/autumnchris/calculator-reactjs.git
+$ cd calculator-reactjs
 $ npm install
 $ npm start
 ```
