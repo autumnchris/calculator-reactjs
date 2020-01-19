@@ -20,7 +20,7 @@ a {
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
-  color: #333;
+  color: #333333;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
   font-weight: 400;
@@ -62,10 +62,10 @@ button:focus {
   outline: none; }
 
 html {
-  background: #333;
+  background: #333333;
   background: linear-gradient(120deg, #262626, #4d4d4d) fixed; }
   html h1 {
-    color: #fff;
+    color: white;
     font-family: "Oxygen Mono", monospace;
     font-size: 1.5rem;
     letter-spacing: 12px;
@@ -112,9 +112,9 @@ html {
         html main .calculator .button-group button:active,
         html main .calculator .button-group button:focus {
           background: #00779e;
-          box-shadow: -1px 3px 2px #000;
+          box-shadow: -1px 3px 2px black;
           border-radius: 4px;
-          color: #fff;
+          color: white;
           font-size: 1rem;
           height: 45px;
           margin: 5px;
@@ -130,7 +130,7 @@ html {
           html main .calculator .button-group button:hover:active,
           html main .calculator .button-group button:active:active,
           html main .calculator .button-group button:focus:active {
-            box-shadow: -1px 1px 2px #000;
+            box-shadow: -1px 1px 2px black;
             transform: translateY(2px);
             -ms-transform: translateY(2px);
             -webkit-transform: translateY(2px); }
@@ -138,18 +138,18 @@ html {
         html main .calculator .button-group .number:hover,
         html main .calculator .button-group .number:active,
         html main .calculator .button-group .number:focus {
-          background: #fff;
-          color: #333; }
+          background: white;
+          color: #333333; }
         html main .calculator .button-group .clear,
         html main .calculator .button-group .clear:hover,
         html main .calculator .button-group .clear:active,
         html main .calculator .button-group .clear:focus {
           background: #f3878c;
-          color: #333; }
+          color: #333333; }
   html footer {
     background: rgba(255, 255, 255, 0.1);
     bottom: 0;
-    color: #fff;
+    color: white;
     font-size: 0.8rem;
     left: 0;
     letter-spacing: 2px;
