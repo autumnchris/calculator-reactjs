@@ -8,6 +8,7 @@ My project for the [Build a JavaScript Calculator challenge](https://learn.freec
 * [React.js](https://reactjs.org)
 * [Sass](http://sass-lang.com)
 * [Webpack](https://webpack.js.org)
+* [Normalize.css](https://necolas.github.io/normalize.css)
 * [Digital 7 font](https://www.dafont.com/digital-7.font)
 * [Google Fonts](https://fonts.google.com)
 * [Babel](https://babeljs.io)

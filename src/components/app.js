@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ButtonGroup from './button-group';
+import CalcButton from './calc-button';
 
 export default class App extends Component {
 
@@ -7,7 +7,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       screenValue: '0',
-      buttons: [
+      calcButtons: [
         {
           value: '+/-',
           func: () => this.togglePosNeg()
@@ -43,7 +43,8 @@ export default class App extends Component {
         },
         {
           value: '&divide;',
-          func: () => this.selectOperator('/')
+          func: () => this.selectOperator('/'),
+          className: 'operator'
         },
         {
           value: '4',
@@ -62,7 +63,8 @@ export default class App extends Component {
         },
         {
           value: '&times;',
-          func: () => this.selectOperator('*')
+          func: () => this.selectOperator('*'),
+          className: 'operator'
         },
         {
           value: '1',
@@ -81,7 +83,8 @@ export default class App extends Component {
         },
         {
           value: '-',
-          func: () => this.selectOperator('-')
+          func: () => this.selectOperator('-'),
+          className: 'operator'
         },
         {
           value: '0',
@@ -98,7 +101,8 @@ export default class App extends Component {
         },
         {
           value: '+',
-          func: () => this.selectOperator('+')
+          func: () => this.selectOperator('+'),
+          className: 'operator'
         }
       ]
     };
@@ -301,7 +305,7 @@ export default class App extends Component {
             {/* CALCULATOR SCREEN */}
             <div className="screen">{this.state.screenValue}</div>
             {/* CALCULATOR BUTTONS */}
-            <ButtonGroup buttons={this.state.buttons} />
+            <div className="calc-buttons-container">{this.state.calcButtons.map((calcButton, index) => <CalcButton key={index} calcButton={calcButton} />)}</div>
           </div>
         </main>
         {/* FOOTER */}
