@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CalcButton from './calc-button';
 
-export default class App extends Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -295,22 +295,20 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="body">
-        {/* HEADER */}
+      <React.Fragment>
         <header>
           <h1>Calculator</h1>
         </header>
         <main>
           <div className="calculator">
-            {/* CALCULATOR SCREEN */}
             <div className="screen">{this.state.screenValue}</div>
-            {/* CALCULATOR BUTTONS */}
             <div className="calc-buttons-container">{this.state.calcButtons.map((calcButton, index) => <CalcButton key={index} calcButton={calcButton} />)}</div>
           </div>
         </main>
-        {/* FOOTER */}
         <footer>Created by <a href="https://autumnbullard-portfolio.herokuapp.com" target="_blank">Autumn Bullard</a> &copy; {new Date().getFullYear()}</footer>
-      </div>
+      </React.Fragment>
     );
   }
 }
+
+export default App;
