@@ -107,62 +107,34 @@ class App extends React.Component {
       ]
     };
     this.result = '0';
+    this.endsWithOperator = this.result.charAt(this.result.length - 1).match(/\s/);
   }
 
-  selectNumber(elem) {
+  selectNumber(number) {
     this.result = this.result.split(' ');
 
     if (this.result[this.result.length - 1] === '0') {
       this.result[this.result.length - 1] = this.result[this.result.length - 1].substr(1);
     }
-    this.result[this.result.length - 1] += elem;
+    this.result[this.result.length - 1] += number;
     this.setState({
       screenValue: this.result[this.result.length - 1]
     });
     this.result = this.result.join(' ');
   }
 
-  selectOperator(elem) {
+  selectOperator(operator) {
     this.solveEquation();
 
-    if (this.result.charAt(this.result.length - 1).match(/\s/)) {
+    if (this.endsWithOperator) {
       this.result = this.result.substr(0, this.result.length - 3);
     }
-    this.result += ` ${elem} `;
-  }
-
-  solveEquation() {
-    let num1;
-    let num2;
-
-    if (this.result.includes(' ') && !this.result.charAt(this.result.length - 1).match(/\s/)) {
-      this.result = this.result.split(' ');
-      num1 = Number(this.result[0]);
-      num2 = Number(this.result[2]);
-
-      switch (this.result[1]) {
-        case '+':
-          this.result = num1 + num2;
-          break;
-        case '-':
-          this.result = num1 - num2;
-          break;
-        case '*':
-          this.result = num1 * num2;
-          break;
-        case '/':
-          this.result = num1 / num2;
-      }
-      this.result = this.result.toString();
-      this.setState({
-        screenValue: this.result
-      });
-    }
+    this.result += ` ${operator} `;
   }
 
   togglePosNeg() {
 
-    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+    if (!this.endsWithOperator) {
       this.result = this.result.split(' ');
 
       if (this.result[this.result.length - 1] < 0) {
@@ -183,7 +155,7 @@ class App extends React.Component {
 
   convertToPercent() {
 
-    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+    if (!this.endsWithOperator) {
       this.result = this.result.split(' ');
       this.result[this.result.length - 1] /= 100;
       this.setState({
@@ -195,7 +167,7 @@ class App extends React.Component {
 
   clearEntry() {
 
-    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+    if (!this.endsWithOperator) {
       this.result = this.result.split(' ');
       this.result[this.result.length - 1] = '0';
       this.setState({
@@ -217,7 +189,7 @@ class App extends React.Component {
 
   selectDecimal() {
 
-    if (!this.result.charAt(this.result.length - 1).match(/\s/)) {
+    if (!this.endsWithOperator) {
       this.result = this.result.split(' ');
 
       if (!this.result[this.result.length - 1].includes('.')){
@@ -230,7 +202,37 @@ class App extends React.Component {
     }
   }
 
+  solveEquation() {
+    let a;
+    let b;
+
+    if (this.result.includes(' ') && !this.endsWithOperator) {
+      this.result = this.result.split(' ');
+      a = Number(this.result[0]);
+      b = Number(this.result[2]);
+
+      switch (this.result[1]) {
+        case '+':
+          this.result = a + b;
+          break;
+        case '-':
+          this.result = a - b;
+          break;
+        case '*':
+          this.result = a * b;
+          break;
+        case '/':
+          this.result = a / b;
+      }
+      this.result = this.result.toString();
+      this.setState({
+        screenValue: this.result
+      });
+    }
+  }
+
   setKeys(event) {
+    event.preventDefault();
 
     if (event.shiftKey) {
       switch (event.keyCode) {
@@ -263,12 +265,10 @@ class App extends React.Component {
             break;
           // equal sign
           case 187:
-          // enter
-          case 13:
             this.solveEquation();
             break;
-          // spacebar
-          case 32:
+          // option/alt
+          case 18:
             this.togglePosNeg();
             break;
           // delete/backspace
@@ -282,6 +282,7 @@ class App extends React.Component {
           // decimal/period
           case 190:
             this.selectDecimal();
+            break;
         }
       }
     }
