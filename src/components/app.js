@@ -306,7 +306,7 @@ class App extends React.Component {
             <div className="calc-buttons-container">{this.state.calcButtons.map((calcButton, index) => <CalcButton key={index} calcButton={calcButton} />)}</div>
           </div>
         </main>
-        <footer>Created by <a href="https://autumnbullard-portfolio.herokuapp.com" target="_blank">Autumn Bullard</a> &copy; {new Date().getFullYear()}</footer>
+        <footer>Created by <a href="https://autumnchris.github.io/portfolio" target="_blank">Autumn Bullard</a> &copy; {new Date().getFullYear()}</footer>
       </React.Fragment>
     );
   }
