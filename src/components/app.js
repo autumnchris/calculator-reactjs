@@ -177,13 +177,13 @@ const App = () => {
     let currentNumA = numA;
     let currentNumB = numB;
 
-    if (numB) {
+    if (currentNumB) {
       currentNumB /= 100;
       currentNumB = currentNumB.toString();
       setNumB(currentNumB);
       setScreenValue(currentNumB);
     }
-    else if (!operator && !numB) {
+    else if (!operator && !currentNumB) {
       currentNumA /= 100;
       currentNumA = currentNumA.toString();
       setNumA(currentNumA);
