@@ -102,7 +102,7 @@ const App = () => {
   ];
 
   const [screenValue, setScreenValue] = useState('0');
-  const [numA, setNumA] = useState('');
+  const [numA, setNumA] = useState('0');
   const [numB, setNumB] = useState('');
   const [operator, setOperator] = useState('');
 
@@ -110,23 +110,29 @@ const App = () => {
     let currentNumA = numA;
     let currentNumB = numB;
 
-    if (!operator) {
-      if(currentNumA === '0') currentNumA = ''; 
-      currentNumA += number;
-      setNumA(currentNumA);
-      setScreenValue(currentNumA);
-    }
-    else {
-      if(currentNumB === '0') currentNumB = ''; 
-      currentNumB += number;
-      setNumB(currentNumB);
-      setScreenValue(currentNumB);
+    if (!checkIfError()) {
+
+      if (!operator) {
+        if(currentNumA === '0') currentNumA = ''; 
+        currentNumA += number;
+        setNumA(currentNumA);
+        setScreenValue(currentNumA);
+      }
+      else {
+        if(currentNumB === '0') currentNumB = ''; 
+        currentNumB += number;
+        setNumB(currentNumB);
+        setScreenValue(currentNumB);
+      }
     }
   }
 
   function selectOperator(operatorValue) {
-    if(numB) solveEquation();
-    if(numA) setOperator(operatorValue);
+
+    if (!checkIfError()) {
+      if(numB) solveEquation();
+      setOperator(operatorValue);
+    }
   }
 
   function solveEquation() {
@@ -136,24 +142,32 @@ const App = () => {
 
     if (numB && operator) {
 
-      switch (operator) {
-        case '+':
-          formula = a + b;
-          break;
-        case '-':
-          formula = a - b;
-          break;
-        case '*':
-          formula = a * b;
-          break;
-        case '/':
-          formula = a / b;
+      if (operator === '/' && numB === '0') {
+        setNumA('');
+        setNumB('');
+        setOperator('');
+        setScreenValue('ERROR');
       }
-      formula = formula.toString();
-      setNumA(formula);
-      setNumB('');
-      setOperator('');
-      setScreenValue(formula);
+      else {
+        switch (operator) {
+          case '+':
+            formula = a + b;
+            break;
+          case '-':
+            formula = a - b;
+            break;
+          case '*':
+            formula = a * b;
+            break;
+          case '/':
+            formula = a / b;
+        }
+        formula = formula.toString();
+        setNumA(formula);
+        setNumB('');
+        setOperator('');
+        setScreenValue(formula);
+      }
     }
   }
 
@@ -161,15 +175,18 @@ const App = () => {
     let currentNumA = numA;
     let currentNumB = numB;
 
-    if (currentNumB && !currentNumB.includes('.')) {
-      screenValue === '0' ? currentNumB = '0.' : currentNumB += '.';
-      setNumB(currentNumB);
-      setScreenValue(currentNumB);
-    }
-    else if (!operator && !currentNumB && !currentNumA.includes('.')) {
-      screenValue === '0' ? currentNumA = '0.' : currentNumA += '.';
-      setNumA(currentNumA);
-      setScreenValue(currentNumA);
+    if (!checkIfError()) {
+
+      if (operator && !currentNumB.includes('.')) {
+        currentNumB === '0' || currentNumB === '' ? currentNumB = '0.' : currentNumB += '.';
+        setNumB(currentNumB);
+        setScreenValue(currentNumB);
+      }
+      else if (checkIfOnNumA() && !currentNumA.includes('.')) {
+        currentNumA === '0' || currentNumA === '' ? currentNumA = '0.' : currentNumA += '.';
+        setNumA(currentNumA);
+        setScreenValue(currentNumA);
+      }
     }
   }
 
@@ -177,17 +194,20 @@ const App = () => {
     let currentNumA = numA;
     let currentNumB = numB;
 
-    if (currentNumB) {
-      currentNumB /= 100;
-      currentNumB = currentNumB.toString();
-      setNumB(currentNumB);
-      setScreenValue(currentNumB);
-    }
-    else if (!operator && !currentNumB) {
-      currentNumA /= 100;
-      currentNumA = currentNumA.toString();
-      setNumA(currentNumA);
-      setScreenValue(currentNumA);
+    if (!checkIfError()) {
+
+      if (checkIfOnNumB()) {
+        currentNumB /= 100;
+        currentNumB = currentNumB.toString();
+        setNumB(currentNumB);
+        setScreenValue(currentNumB);
+      }
+      else if (checkIfOnNumA()) {
+        currentNumA /= 100;
+        currentNumA = currentNumA.toString();
+        setNumA(currentNumA);
+        setScreenValue(currentNumA);
+      }
     }
   }
 
@@ -195,28 +215,31 @@ const App = () => {
     let currentNumA = numA;
     let currentNumB = numB;
     
-    if (currentNumB) {
-      currentNumB < 0 ? currentNumB = Math.abs(currentNumB) : currentNumB > 0 ? currentNumB = -currentNumB : currentNumB = 0;
-      currentNumB = currentNumB.toString();
-      setNumB(currentNumB);
-      setScreenValue(currentNumB);
-    }
-    else if (!operator && !currentNumB) {
-      currentNumA < 0 ? currentNumA = Math.abs(currentNumA) : currentNumA > 0 ? currentNumA = -currentNumA : currentNumA = 0;
-      currentNumA = currentNumA.toString();
-      setNumA(currentNumA);
-      setScreenValue(currentNumA);
+    if (!checkIfError()) {
+
+      if (checkIfOnNumB()) {
+        currentNumB < 0 ? currentNumB = Math.abs(currentNumB) : currentNumB > 0 ? currentNumB = -currentNumB : currentNumB = 0;
+        currentNumB = currentNumB.toString();
+        setNumB(currentNumB);
+        setScreenValue(currentNumB);
+      }
+      else if (checkIfOnNumA()) {
+        currentNumA < 0 ? currentNumA = Math.abs(currentNumA) : currentNumA > 0 ? currentNumA = -currentNumA : currentNumA = 0;
+        currentNumA = currentNumA.toString();
+        setNumA(currentNumA);
+        setScreenValue(currentNumA);
+      }
     }
   }
 
   function clearEntry() {
 
     if (operator && numB) {
-      setNumB('');
+      setNumB('0');
       setScreenValue('0');
     }
     else if (!operator) {
-      setNumA('');
+      setNumA('0');
       setScreenValue('0');
     }
     else {
@@ -225,10 +248,22 @@ const App = () => {
   }
 
   function clearAll() {
-    setNumA('');
+    setNumA('0');
     setNumB('');
     setOperator('');
     setScreenValue('0');
+  }
+
+  function checkIfError() {
+    return screenValue === 'ERROR' ? true : false;
+  }
+
+  function checkIfOnNumA() {
+    return !numB && !operator ? true : false;
+  }
+
+  function checkIfOnNumB() {
+    return numB ? true : false;
   }
 
   return (
@@ -238,7 +273,7 @@ const App = () => {
       </header>
       <main>
         <div className="calculator">
-          <div className="screen" id="display">{screenValue}</div>
+          <div className="screen">{screenValue}</div>
           <div className="calc-buttons-container">{calcButtons.map((calcButton, index) => <CalcButton key={index} calcButton={calcButton} />)}</div>
         </div>
       </main>
