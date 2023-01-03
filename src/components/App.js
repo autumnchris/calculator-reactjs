@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CalcButton from './Calc-Button';
+import CalcButton from './CalcButton';
 
 const App = () => {
   const calcButtons = [
