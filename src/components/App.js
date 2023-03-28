@@ -1,110 +1,42 @@
 import React, { useState } from 'react';
 import CalcButton from './CalcButton';
+import calcButtons from '../data/calc-buttons';
 
 const App = () => {
-  const calcButtons = [
-    {
-      value: '+/-',
-      func: () => togglePosNeg()
-    },
-    {
-      value: '%',
-      func: () => convertToPercent()
-    },
-    {
-      value: 'CE',
-      func: () => clearEntry(),
-      className: 'clear'
-    },
-    {
-      value: 'AC',
-      func: () => clearAll(),
-      className: 'clear'
-    },
-    {
-      value: '7',
-      func: () => selectNumber('7'),
-      className: 'number'
-    },
-    {
-      value: '8',
-      func: () => selectNumber('8'),
-      className: 'number'
-    },
-    {
-      value: '9',
-      func: () => selectNumber('9'),
-      className: 'number'
-    },
-    {
-      value: '&divide;',
-      func: () => selectOperator('/'),
-      className: 'operator'
-    },
-    {
-      value: '4',
-      func: () => selectNumber('4'),
-      className: 'number'
-    },
-    {
-      value: '5',
-      func: () => selectNumber('5'),
-      className: 'number'
-    },
-    {
-      value: '6',
-      func: () => selectNumber('6'),
-      className: 'number'
-    },
-    {
-      value: '&times;',
-      func: () => selectOperator('*'),
-      className: 'operator'
-    },
-    {
-      value: '1',
-      func: () => selectNumber('1'),
-      className: 'number'
-    },
-    {
-      value: '2',
-      func: () => selectNumber('2'),
-      className: 'number'
-    },
-    {
-      value: '3',
-      func: () => selectNumber('3'),
-      className: 'number'
-    },
-    {
-      value: '-',
-      func: () => selectOperator('-'),
-      className: 'operator'
-    },
-    {
-      value: '0',
-      func: () => selectNumber('0'),
-      className: 'number'
-    },
-    {
-      value: '.',
-      func: () => selectDecimal()
-    },
-    {
-      value: '=',
-      func: () => solveEquation()
-    },
-    {
-      value: '+',
-      func: () => selectOperator('+'),
-      className: 'operator'
-    }
-  ];
-
   const [screenValue, setScreenValue] = useState('0');
   const [numA, setNumA] = useState('0');
   const [numB, setNumB] = useState('');
   const [operator, setOperator] = useState('');
+
+  function handleClick(type, value) {
+
+    switch (type) {
+      case 'number':
+        selectNumber(value);
+        break;
+      case 'operator':
+        selectOperator(value);
+        break;
+      case 'pos/neg':
+        togglePosNeg();
+        break;
+      case 'percent':
+        convertToPercent();
+        break;
+      case 'clear':
+        clearEntry();
+        break;
+      case 'clear all':
+        clearAll();
+        break;
+      case 'decimal':
+        selectDecimal();
+        break;
+      case 'equals':
+        solveEquation();
+        break;
+    }
+  }
 
   function selectNumber(number) {
     let currentNumA = numA;
@@ -142,7 +74,7 @@ const App = () => {
 
     if (numB && operator) {
 
-      if (operator === '/' && numB === '0') {
+      if (operator === '&divide;' && numB === '0') {
         setNumA('');
         setNumB('');
         setOperator('');
@@ -156,11 +88,12 @@ const App = () => {
           case '-':
             formula = a - b;
             break;
-          case '*':
+          case '&times;':
             formula = a * b;
             break;
-          case '/':
+          case '&divide;':
             formula = a / b;
+            break;
         }
         formula = formula.toString();
         setNumA(formula);
@@ -274,7 +207,7 @@ const App = () => {
       <main>
         <div className="calculator">
           <div className="screen">{screenValue}</div>
-          <div className="calc-buttons-container">{calcButtons.map((calcButton, index) => <CalcButton key={index} calcButton={calcButton} />)}</div>
+          <div className="calc-buttons-container">{calcButtons.map(calcButton => <CalcButton key={calcButton.id} calcButton={calcButton} handleClick={handleClick} />)}</div>
         </div>
       </main>
       <footer>Created by <a href="https://autumnchris.github.io/portfolio" target="_blank">Autumn Bullard</a> &copy; {new Date().getFullYear()}</footer>
