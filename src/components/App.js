@@ -74,7 +74,7 @@ const App = () => {
 
     if (numB && operator) {
 
-      if (operator === '&divide;' && numB === '0') {
+      if (operator === '/' && numB === '0') {
         setNumA('');
         setNumB('');
         setOperator('');
@@ -88,10 +88,10 @@ const App = () => {
           case '-':
             formula = a - b;
             break;
-          case '&times;':
+          case '*':
             formula = a * b;
             break;
-          case '&divide;':
+          case '/':
             formula = a / b;
             break;
         }
