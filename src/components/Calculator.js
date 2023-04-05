@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CalcButton from './CalcButton';
 import calcButtons from '../data/calc-buttons';
 
-const App = () => {
+const Calculator = () => {
   const [screenValue, setScreenValue] = useState('0');
   const [numA, setNumA] = useState('0');
   const [numB, setNumB] = useState('');
@@ -200,19 +200,11 @@ const App = () => {
   }
 
   return (
-    <React.Fragment>
-      <header>
-      <h1>Calculator</h1>
-      </header>
-      <main>
-        <div className="calculator">
-          <div className="screen">{screenValue}</div>
-          <div className="calc-buttons-container">{calcButtons.map(calcButton => <CalcButton key={calcButton.id} calcButton={calcButton} handleClick={handleClick} />)}</div>
-        </div>
-      </main>
-      <footer>Created by <a href="https://autumnchris.github.io/portfolio" target="_blank">Autumn Bullard</a> &copy; {new Date().getFullYear()}</footer>
-    </React.Fragment>
+    <div className="calculator">
+      <div className="screen">{screenValue}</div>
+      <div className="calc-buttons-container">{calcButtons.map(calcButton => <CalcButton key={calcButton.id} calcButton={calcButton} handleClick={handleClick} />)}</div>
+    </div>
   );
 }
 
-export default App;
+export default Calculator;
